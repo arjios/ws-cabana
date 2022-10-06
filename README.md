@@ -1,9 +1,4 @@
-# Challenge ONE | Java | Back-end | Hotel Alura
-
-<p align="center" >
-     <img width="400" heigth="400" src="https://user-images.githubusercontent.com/101413385/173164615-192ca98a-1a44-480e-9229-9f82f456eec8.png">
-
-</p>
+# BEACH HUT | Java | Back-end | React Typescript | Front-end
 
 ---
 ##  Primeiros Passos:
@@ -16,14 +11,16 @@
 ## 🖥️ Tecnologias Utilizadas:
 
 - Java
+- Spring
 - Eclipse
 - MySql
-- Biblioteca JCalendar
-- Plugin WindowBuilder </br>
+- Biblioteca React
+- Typescript </br>
 
 ---
 ## ⚠️ Importante! ⚠️
 
+- Este README esta desatualizado 
 ☕ Use o Java na versão 8 ou superior para ter compatibilidade. 
 </br></br>
 📝 Recomendamos utilizar o editor Eclipse para compatibilidade da interface gráfica. </br></br>
