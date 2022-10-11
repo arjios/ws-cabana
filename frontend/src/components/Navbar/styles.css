@@ -1,0 +1,33 @@
+.navbar_principal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: navy;
+    min-height: 70px;
+}
+
+.navbar_container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar_logo, .navbar_logo:hover {
+    margin-left: 20px;
+    margin-top: 8px;
+    color: #FFF;
+}
+
+.navbar_item {
+    margin-top: 8px;
+    list-style: none;
+}
+
+.navbar_link {
+    margin-right: 20px;
+
+    color: #AAA;
+}
+
+.navbar_link:hover {
+    color: #FFF;
+}
