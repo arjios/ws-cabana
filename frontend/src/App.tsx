@@ -1,13 +1,13 @@
-import './assets/styles/custom.scss';
-import Navbar from 'components/Navbar';
 
+import './assets/styles/custom.scss';
 import './App.css';
 
-function App() {
+import Home from './pages/Home';
+
+const App = () => {
   return (
     <>
-      <Navbar />
-      <h1>Beach Hut</h1>
+      <Home />
     </>
   );
 }
