@@ -3,6 +3,7 @@ import { ReactComponent as HomeImage } from '../../assets/images/image.svg';
 import Navbar from 'components/Navbar';
 
 import './styles.css';
+import ButtonIcon from 'components/ButtonIcon';
 
 
 const Home = () => {
@@ -12,7 +13,8 @@ const Home = () => {
       <div className = "home_container">
         <div className = "home_card">
           <div className = "home_content">
-              <h1>-   Cabana do Sol-</h1>
+              <h1>Cabana do Sol</h1>
+              <ButtonIcon />
           </div>
           <div className = "home_image">
             <HomeImage />
