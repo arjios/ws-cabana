@@ -1,8 +1,9 @@
-INSERT INTO tb_category (name) VALUES ('Aves');
-INSERT INTO tb_category (name) VALUES ('Carnes');
-INSERT INTO tb_category (name) VALUES ('Peixes');
-INSERT INTO tb_category (name) VALUES ('Sucos');
-INSERT INTO tb_category (name) VALUES ('Cervejas');
-INSERT INTO tb_category (name) VALUES ('Coqueteis');
-INSERT INTO tb_category (name) VALUES ('Petiscos');
+INSERT INTO tb_category (name, created_at, updated_at) VALUES ('Aves', NOW(), null);
+INSERT INTO tb_category (name, created_at, updated_at) VALUES ('Carnes', NOW(), null);
+INSERT INTO tb_category (name, created_at, updated_at) VALUES ('Peixes', NOW(), null);
+INSERT INTO tb_category (name, created_at, updated_at) VALUES ('Sucos', NOW(), null);
+INSERT INTO tb_category (name, created_at, updated_at) VALUES ('Cervejas', NOW(), null);
+INSERT INTO tb_category (name, created_at, updated_at) VALUES ('Coqueteis', NOW(), null);
+INSERT INTO tb_category (name, created_at, updated_at) VALUES ('Petiscos', NOW(), null);
+
 
