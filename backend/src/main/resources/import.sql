@@ -13,12 +13,15 @@ INSERT INTO tb_user (first_name, last_name, email, password, role_id) VALUES ('A
 INSERT INTO tb_user (first_name, last_name, email, password, role_id) VALUES ('Pedro', 'Peixoto', 'pp@gmail.com', '123456', 3);
 
 
-INSERT INTO tb_category (name, created_at, updated_at) VALUES ('Aves', NOW(), null);
-INSERT INTO tb_category (name, created_at, updated_at) VALUES ('Carnes', NOW(), null);
-INSERT INTO tb_category (name, created_at, updated_at) VALUES ('Peixes', NOW(), null);
-INSERT INTO tb_category (name, created_at, updated_at) VALUES ('Sucos', NOW(), null);
+INSERT INTO tb_category (name, created_at, updated_at) VALUES ('Entradas', NOW(), null);
+INSERT INTO tb_category (name, created_at, updated_at) VALUES ('Porções', NOW(), null);
+INSERT INTO tb_category (name, created_at, updated_at) VALUES ('Petiscos', NOW(), null);
+INSERT INTO tb_category (name, created_at, updated_at) VALUES ('Especiais', NOW(), null);
+INSERT INTO tb_category (name, created_at, updated_at) VALUES ('Acompanhamentos', NOW(), null);
+INSERT INTO tb_category (name, created_at, updated_at) VALUES ('Sobremesas', NOW(), null);
+INSERT INTO tb_category (name, created_at, updated_at) VALUES ('Bebidas', NOW(), null);
 INSERT INTO tb_category (name, created_at, updated_at) VALUES ('Cervejas', NOW(), null);
 INSERT INTO tb_category (name, created_at, updated_at) VALUES ('Coqueteis', NOW(), null);
-INSERT INTO tb_category (name, created_at, updated_at) VALUES ('Petiscos', NOW(), null);
+INSERT INTO tb_category (name, created_at, updated_at) VALUES ('Vinhos', NOW(), null);
 
 

@@ -3,6 +3,7 @@ package com.ios.cabana.entities;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,7 +24,7 @@ public class User implements Serializable {
 	private String email;
 	private String password;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "role_id")
 	private Role role;
 	
@@ -80,6 +81,10 @@ public class User implements Serializable {
 
 	public Role getRole() {
 		return role;
+	}
+	
+	public void setRole(Role role) {
+		this.role = role;
 	}
 
 	@Override
