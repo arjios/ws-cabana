@@ -2,12 +2,12 @@
 import './assets/styles/custom.scss';
 import './App.css';
 
-import Home from './pages/Home';
+import Router from 'Router';
 
 const App = () => {
   return (
     <>
-      <Home />
+      <Router />
     </>
   );
 }

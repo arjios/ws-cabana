@@ -1,0 +1,16 @@
+.btn-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:chocolate;
+    color: #FFF;
+    font-size: 28px;
+    font-weight: bold;
+    width: 100%;
+    height: 40px;
+}
+
+.btn-card:hover {
+    background-color:chocolate;
+    color: #FFF;
+}
