@@ -39,6 +39,7 @@ public class CategoryService {
 	public CategoryDTO insert(CategoryDTO dto) {
 		Category entity = new Category();
 		entity.setName(dto.getName());
+		entity.setUrlImage(dto.getUrlImage());
 		entity = categoryRepository.save(entity);
 		return new CategoryDTO(entity);
 	}
@@ -48,6 +49,7 @@ public class CategoryService {
 		try {
 			Category entity = categoryRepository.getReferenceById(id);
 			entity.setName(dto.getName());
+			entity.setUrlImage(dto.getUrlImage());
 			entity = categoryRepository.save(entity);
 			return new CategoryDTO(entity);			
 		} catch(EntityNotFoundException e) {

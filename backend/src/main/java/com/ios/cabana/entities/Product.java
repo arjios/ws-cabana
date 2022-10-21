@@ -2,47 +2,50 @@ package com.ios.cabana.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.HashSet;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_category")
-public class Category implements Serializable {
+@Table(name = "tb_product")
+public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	private Integer number;
 	private String name;
+	private String description;
 	private String urlImage;
 	
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-	private Instant createdAt;
+	private Instant date;
+	private Double price;
 	
-	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-	private Instant updatedAt;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "category_id")
+	private Category category;
 	
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Product> product = new HashSet<>();
-	
-	public Category() {
+	public Product() {
 	}
 
-	public Category(Long id, String name, String urlImage) {
+	public Product(Long id, Integer number, String name, 
+			String description, String urlImage, Instant date, Double price) {
 		this.id = id;
+		this.number = number;
 		this.name = name;
+		this.description = description;
 		this.urlImage = urlImage;
+		this.date = date;
+		this.price = price;
 	}
 
 	public Long getId() {
@@ -53,6 +56,14 @@ public class Category implements Serializable {
 		this.id = id;
 	}
 
+	public Integer getNumber() {
+		return number;
+	}
+
+	public void setNumber(Integer number) {
+		this.number = number;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -61,12 +72,12 @@ public class Category implements Serializable {
 		this.name = name;
 	}
 
-	public Instant getCreatedAt() {
-		return createdAt;
+	public String getDescription() {
+		return description;
 	}
 
-	public Instant getUpdatedAt() {
-		return updatedAt;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getUrlImage() {
@@ -77,14 +88,28 @@ public class Category implements Serializable {
 		this.urlImage = urlImage;
 	}
 
-	@PrePersist
-	public void preInsert() {
-		createdAt = Instant.now();
+	public Instant getDate() {
+		return date;
 	}
-	
-	@PreUpdate
-	public void preUpdate() {
-		updatedAt = Instant.now();
+
+	public void setDate(Instant date) {
+		this.date = date;
+	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 	@Override
@@ -103,7 +128,7 @@ public class Category implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Category other = (Category) obj;
+		Product other = (Product) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
