@@ -25,3 +25,4 @@ INSERT INTO tb_category (name, url_image, created_at, updated_at) VALUES ('Coque
 INSERT INTO tb_category (name, url_image, created_at, updated_at) VALUES ('Cervejas', 'D:\ws-cabana\cabana\frontend\src\assets\images\jpg\cervejas.jpg', NOW(), null);
 INSERT INTO tb_category (name, url_image, created_at, updated_at) VALUES ('Vinhos', 'D:\ws-cabana\cabana\frontend\src\assets\images\jpg\vinhos.jpg', NOW(), null);
 
+INSERT INTO tb_product (number, name, description, url_image, date, price, category_id) VALUES (106, 'Torresmo de Barriguinha 250g', 'Torresmo de Barriguinha 250g com Molho Barbecue', 'D:\ws-cabana\cabana\frontend\src\assets\images\jpg\products\torresmo.jpg', NOW(), 34.90, 1);
