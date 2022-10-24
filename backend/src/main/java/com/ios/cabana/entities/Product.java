@@ -30,7 +30,7 @@ public class Product implements Serializable {
 	private Instant date;
 	private Double price;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "category_id")
 	private Category category;
 	

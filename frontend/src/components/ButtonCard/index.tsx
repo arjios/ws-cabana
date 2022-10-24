@@ -1,13 +1,15 @@
+
+
 import "./styles.css";
 
 type Props ={
-  text: string;
+  name: string;
 }
 
-const ButtonCard = ({ text }: Props) => {
+const ButtonCard = ( { name } : Props ) => {
   return (
     <div>
-      <button className="btn btn-card">{text}</button>
+      <button className="btn btn-card">{ name }</button>
     </div>
   );
 };

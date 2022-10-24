@@ -1,10 +1,14 @@
 import "./styles.css";
 
-const MenuCategory = () => {
+type Props = {
+  name: string;
+}
+
+const MenuCategory = ( { name }: Props ) => {
   return (
     <div>
       <button className="btn btn-primary btn-icon">
-        <p>ENTRADAS</p>
+        <p>{ name }</p>
       </button>
     </div>
   );

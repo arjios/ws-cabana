@@ -1,13 +1,13 @@
 package com.ios.cabana.services;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,15 +24,16 @@ public class CategoryService {
 	private CategoryRepository categoryRepository;
 	
 	@Transactional(readOnly= true)
-	public List<CategoryDTO> findAll() {
-		List<Category> list = categoryRepository.findAll();
-		return list.stream().map(x -> new CategoryDTO(x)).collect(Collectors.toList());
+	public Page<CategoryDTO> findAllPaged(Pageable pageable) {
+		Page<Category> list = categoryRepository.findAll(pageable);
+		return list.map(x -> new CategoryDTO(x));
 	}
 	
 	@Transactional(readOnly= true)
 	public CategoryDTO findById(Long id) {
 		Optional<Category> obj = categoryRepository.findById(id);
-		return new CategoryDTO(obj.orElseThrow(() -> new ResourceNotFoundException("Categoria não encontrada")));
+		Category entity = obj.orElseThrow(() -> new ResourceNotFoundException("Categoria não encontrada"));
+		return new CategoryDTO(entity, entity.getProducts());
 	}
 
 	@Transactional

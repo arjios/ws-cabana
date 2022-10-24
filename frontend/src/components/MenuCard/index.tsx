@@ -1,18 +1,23 @@
 import './styles.css';
 
-import MenuImg from 'assets/images/jpg/bolinhodefeijoada.jpg';
 import ButtonCard from 'components/ButtonCard';
+import { Category } from 'types/category';
 
-const MenuCard = () => {
+type Props = {
+    category: Category;
+}
+
+
+const MenuCard = ( { category } : Props ) => {
 
     return(
         <div className = "base_card menu_card">
             <div className = "card_img col-md-3 col-xs-6">
-                <img src = {MenuImg} className = "card_img__pic" alt = "Bolinho" />
+                <img src = {category.urlImage} className = "card_img__pic" alt = "Bolinho" />
             </div>
 
             <div className = "card_img col-md-3 col-xs-6">
-                <ButtonCard text="ENTRADAS"/>
+                <ButtonCard  name = {category.name} />
             </div>
 
         </div>

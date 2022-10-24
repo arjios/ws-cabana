@@ -34,7 +34,7 @@ public class Category implements Serializable {
 	private Instant updatedAt;
 	
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Product> product = new HashSet<>();
+    private Set<Product> products = new HashSet<>();
 	
 	public Category() {
 	}
@@ -75,6 +75,10 @@ public class Category implements Serializable {
 
 	public void setUrlImage(String urlImage) {
 		this.urlImage = urlImage;
+	}
+
+	public Set<Product> getProducts() {
+		return products;
 	}
 
 	@PrePersist
