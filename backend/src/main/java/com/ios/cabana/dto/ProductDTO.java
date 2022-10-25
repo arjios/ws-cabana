@@ -3,7 +3,6 @@ package com.ios.cabana.dto;
 import java.io.Serializable;
 import java.time.Instant;
 
-import com.ios.cabana.entities.Category;
 import com.ios.cabana.entities.Product;
 
 public class ProductDTO implements Serializable {
