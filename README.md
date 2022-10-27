@@ -20,8 +20,8 @@
 ---
 ## ⚠️ Importante! ⚠️
 
-- Este README esta desatualizado 
-☕ Use o Java na versão 8 ou superior para ter compatibilidade. 
+- Este README é um template que esta sendo atualizado para o projeto em questão, as imagens e texto ainda não condizem com o projeto atual.
+☕ Use o Java na versão 11 ou superior para ter compatibilidade. 
 </br></br>
 📝 Recomendamos utilizar o editor Eclipse para compatibilidade da interface gráfica. </br></br>
 🎨 A interface contém dois importantes métodos:
@@ -34,11 +34,12 @@
 ---
 
 
-## 🔍 Analisando nosso repositório!
+## 🔍 Analisando o repositório!
 
 ### Este é o repositório base do nosso projeto, nele você encontrará:
-#### 🔹 src/views: pasta com toda a interface gráfica das telas necessárias para desenvolver o programa;
-#### 🔹 src/imagens: pasta com imagens que você pode utilizar em seu projeto. Sinta-se a vontade para utilizar outras, caso deseje.
+#### 🔹 backend: pasta com os arquivos em JAVA responsavel pelo Backend da aplicação;
+#### 🔹 frontend: pasta com os arquivos em REACT/TYPESCRIPT responsavel pelo Frontend da aplicação;
+#### 🔹 frontend/src/assets/images: pasta com imagens utilizada no projeto. Estas imagens foram retiradas de um site para demosnstração e testes.
 </br>
 
 ## ⬇️ Download
