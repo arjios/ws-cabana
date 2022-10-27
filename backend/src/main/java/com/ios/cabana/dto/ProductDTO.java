@@ -3,6 +3,10 @@ package com.ios.cabana.dto;
 import java.io.Serializable;
 import java.time.Instant;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Positive;
+
 import com.ios.cabana.entities.Product;
 
 public class ProductDTO implements Serializable {
@@ -10,11 +14,13 @@ public class ProductDTO implements Serializable {
 	
 	private Long id;
 	private Integer number;
+	@NotBlank(message = "Campo não pode ficar em branco.")
 	private String name;
 	private String description;
 	private String urlImage;
-
+	@PastOrPresent(message = "Campo não pode ter data futura.")
 	private Instant date;
+	@Positive(message = "O campo preço deve ser positivo.")
 	private Double price;
 
 	private CategoryDTO categoryDTO;

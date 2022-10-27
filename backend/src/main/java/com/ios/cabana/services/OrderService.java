@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ios.cabana.dto.OrderDTO;
 import com.ios.cabana.entities.Order;
-import com.ios.cabana.entities.OrderStatus;
+import com.ios.cabana.entities.enuns.OrderStatus;
 import com.ios.cabana.repositories.OrderRepository;
 
 @Service

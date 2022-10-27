@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ios.cabana.entities.Order;
-import com.ios.cabana.entities.OrderStatus;
 import com.ios.cabana.entities.Product;
 import com.ios.cabana.entities.Role;
+import com.ios.cabana.entities.enuns.OrderStatus;
 
 public class OrderDTO implements Serializable {
 	private static final long serialVersionUID = 1L;

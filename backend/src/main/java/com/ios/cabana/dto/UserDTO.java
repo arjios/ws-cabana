@@ -2,6 +2,9 @@ package com.ios.cabana.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+
 import com.ios.cabana.entities.Role;
 import com.ios.cabana.entities.User;
 
@@ -9,8 +12,11 @@ public class UserDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
+	@NotBlank(message = "Campo não pode ficar em branco.")
 	private String firstName;
+	@NotBlank(message = "Campo não pode ficar em branco.")
 	private String lastName;
+	@Email(message = "Campo deve ter um email valido.")
 	private String email;
 	
 	private RoleDTO role;

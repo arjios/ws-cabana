@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ios.cabana.dto.OrderDTO;
-import com.ios.cabana.entities.OrderStatus;
+import com.ios.cabana.entities.enuns.OrderStatus;
 import com.ios.cabana.services.OrderService;
 
 @RestController

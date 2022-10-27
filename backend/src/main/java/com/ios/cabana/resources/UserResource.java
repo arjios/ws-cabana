@@ -2,6 +2,8 @@ package com.ios.cabana.resources;
 
 import java.net.URI;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -40,7 +42,7 @@ public class UserResource {
 	}
 	
 	@PostMapping(value = "/admin/insert")
-	public ResponseEntity<UserDTO> insert(@RequestBody UserInsertDTO insertDTO) {
+	public ResponseEntity<UserDTO> insert(@Valid @RequestBody UserInsertDTO insertDTO) {
 		UserDTO dto = userService.insert(insertDTO);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				 .buildAndExpand(dto.getId()).toUri(); 
@@ -48,7 +50,7 @@ public class UserResource {
 	}
 	
 	@PutMapping(value = "/admin/update/{id}")
-	public ResponseEntity<UserDTO> update(@PathVariable Long id, @RequestBody UserDTO dto) {
+	public ResponseEntity<UserDTO> update(@PathVariable Long id, @Valid @RequestBody UserDTO dto) {
 		dto = userService.update(id, dto);
 		return ResponseEntity.ok().body(dto);
 	}
