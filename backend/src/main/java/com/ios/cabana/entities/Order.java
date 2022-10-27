@@ -7,12 +7,14 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -29,6 +31,10 @@ public class Order implements Serializable {
 	private Instant moment;
 	private OrderStatus status;
 	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "role_id")
+	private Role role;
+	
 	@ManyToMany
 	@JoinTable( name = "tb_order_product", 
 				joinColumns = @JoinColumn( name = "order_id"),
@@ -38,7 +44,8 @@ public class Order implements Serializable {
 	public Order() {
 	}
 
-	public Order(Long id, Integer account, Instant moment, OrderStatus status) {
+	public Order(Long id, Integer account,  
+			Instant moment, OrderStatus status) {
 		this.id = id;
 		this.account = account;
 		this.moment = moment;
@@ -77,6 +84,14 @@ public class Order implements Serializable {
 		this.status = status;
 	}
 
+	public Role getRole() {
+		return role;
+	}
+	
+	public void setRole(Role role) {
+		this.role = role;
+	}
+	
 	public List<Product> getProducts() {
 		return products;
 	}
