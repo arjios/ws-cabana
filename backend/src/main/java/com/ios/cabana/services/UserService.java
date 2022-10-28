@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ios.cabana.dto.UserDTO;
 import com.ios.cabana.dto.UserInsertDTO;
+import com.ios.cabana.dto.UserUpdateDTO;
 import com.ios.cabana.entities.User;
 import com.ios.cabana.repositories.RoleRepository;
 import com.ios.cabana.repositories.UserRepository;
@@ -64,7 +65,7 @@ public class UserService {
 	}
 
 	@Transactional
-	public UserDTO update(Long id, UserDTO dto) {
+	public UserDTO update(Long id, UserUpdateDTO dto) {
 		try {
 			User entity = userRepository.getReferenceById(id);
 			copyDtoToEntity(dto, entity);

@@ -20,6 +20,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.ios.cabana.dto.UserDTO;
 import com.ios.cabana.dto.UserInsertDTO;
+import com.ios.cabana.dto.UserUpdateDTO;
 import com.ios.cabana.services.UserService;
 
 @RestController
@@ -50,9 +51,9 @@ public class UserResource {
 	}
 	
 	@PutMapping(value = "/admin/update/{id}")
-	public ResponseEntity<UserDTO> update(@PathVariable Long id, @Valid @RequestBody UserDTO dto) {
-		dto = userService.update(id, dto);
-		return ResponseEntity.ok().body(dto);
+	public ResponseEntity<UserDTO> update(@PathVariable Long id, @Valid @RequestBody UserUpdateDTO dto) {
+		UserDTO userDTO = userService.update(id, dto);
+		return ResponseEntity.ok().body(userDTO);
 	}
 	
 	@DeleteMapping(value = "/admin/delete/{id}")
