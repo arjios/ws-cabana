@@ -3,13 +3,13 @@ INSERT INTO tb_role (authority) VALUES ('ROLA_OPERATOR');
 INSERT INTO tb_role (authority) VALUES ('ROLE_SELLER');
 INSERT INTO tb_role (authority) VALUES ('ROLE_STAFF');
 
-INSERT INTO tb_user (first_name, last_name, email, password, role_id) VALUES ('Jose', 'Patrocinio', 'jp@gmail.com', '123456', 1);
-INSERT INTO tb_user (first_name, last_name, email, password, role_id) VALUES ('Antonio', 'Castro Alves', 'aca@gmail.com', '123456', 2);
-INSERT INTO tb_user (first_name, last_name, email, password, role_id) VALUES ('João', 'Maria', 'jm@gmail.com', '123456', 3);
-INSERT INTO tb_user (first_name, last_name, email, password, role_id) VALUES ('Roberval', 'Taylor', 'rt@gmail.com', '123456', 1);
-INSERT INTO tb_user (first_name, last_name, email, password, role_id) VALUES ('Manuel', 'Pereira', 'mp@gmail.com', '123456', 2);
-INSERT INTO tb_user (first_name, last_name, email, password, role_id) VALUES ('Ana', 'Maria Siqueira', 'ams@gmail.com', '123456', 3);
-INSERT INTO tb_user (first_name, last_name, email, password, role_id) VALUES ('Pedro', 'Peixoto', 'pp@gmail.com', '123456', 3);
+INSERT INTO tb_user (first_name, last_name, email, password, role_id) VALUES ('Jose', 'Patrocinio', 'jp@gmail.com', '$2a$10$iq9iv6Big4nf6CnKPoBF7.xFqnBXd8swpDu6NUU3OFFZHP4AU/V4m', 1);
+INSERT INTO tb_user (first_name, last_name, email, password, role_id) VALUES ('Antonio', 'Castro Alves', 'aca@gmail.com', '$2a$10$iq9iv6Big4nf6CnKPoBF7.xFqnBXd8swpDu6NUU3OFFZHP4AU/V4m', 2);
+INSERT INTO tb_user (first_name, last_name, email, password, role_id) VALUES ('João', 'Maria', 'jm@gmail.com', '$2a$10$iq9iv6Big4nf6CnKPoBF7.xFqnBXd8swpDu6NUU3OFFZHP4AU/V4m', 3);
+INSERT INTO tb_user (first_name, last_name, email, password, role_id) VALUES ('Roberval', 'Taylor', 'rt@gmail.com', '$2a$10$iq9iv6Big4nf6CnKPoBF7.xFqnBXd8swpDu6NUU3OFFZHP4AU/V4m', 1);
+INSERT INTO tb_user (first_name, last_name, email, password, role_id) VALUES ('Manuel', 'Pereira', 'mp@gmail.com', 'eyJhbGciOiJIUzI1NiJ9.e30.Df3nAFzT7HUCgGGRU24OCCIIFnwUPBWakRLUQaAqu10', 2);
+INSERT INTO tb_user (first_name, last_name, email, password, role_id) VALUES ('Ana', 'Maria Siqueira', 'ams@gmail.com', 'eyJhbGciOiJIUzI1NiJ9.e30.Df3nAFzT7HUCgGGRU24OCCIIFnwUPBWakRLUQaAqu10', 3);
+INSERT INTO tb_user (first_name, last_name, email, password, role_id) VALUES ('Pedro', 'Peixoto', 'pp@gmail.com', 'eyJhbGciOiJIUzI1NiJ9.e30.Df3nAFzT7HUCgGGRU24OCCIIFnwUPBWakRLUQaAqu10', 3);
 
 INSERT INTO tb_category (name, url_image, created_at, updated_at) VALUES ('Entradas', '../../assets/images/jpg/bolinhodefeijoada.jpg', NOW(), null);
 INSERT INTO tb_category (name, url_image, created_at, updated_at) VALUES ('Porções', '../../assets/images/jpg/porções.jpg', NOW(), null);

@@ -124,7 +124,6 @@ public class User implements UserDetails, Serializable {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
 		Set<Role> roles = new HashSet<>();
 		roles.add(role);
 		return roles.stream().map(r -> new SimpleGrantedAuthority(r.getAuthority()))
@@ -153,7 +152,6 @@ public class User implements UserDetails, Serializable {
 
 	@Override
 	public boolean isEnabled() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 

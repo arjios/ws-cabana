@@ -1,43 +1,42 @@
 package com.ios.cabana.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.Ordered;
-import org.springframework.core.annotation.Order;
-import org.springframework.security.config.Customizer;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
 	
+	@Value("${jwt.secret}")
+	private String jwtSecret;
+
 	@Bean
-	public PasswordEncoder passwordEncoder() {
+	BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 
 	@Bean
-	@Order(Ordered.HIGHEST_PRECEDENCE)
-	public SecurityFilterChain defaultFilterChain(HttpSecurity http) throws Exception {
+	JwtAccessTokenConverter accessTokenConverter() {
+		JwtAccessTokenConverter tokenConverter = new JwtAccessTokenConverter();
+		tokenConverter.setSigningKey(jwtSecret);
+		return tokenConverter;
+	}
 
-// o codigo abaixo não precisa ser escrito no caso de usar o 
-// OAuth2AuthorizationServerConfiguration
-//
-		return http
-				.csrf(csrf -> csrf.disable())
-				.authorizeHttpRequests(auth -> {
-					auth.antMatchers("/").permitAll();
-					auth.antMatchers("/users/admin/**").hasRole("ROLE_ADMIN");
-					auth.antMatchers("/roles/admin/**").hasRole("ROLE_ADMIN");
-					auth.antMatchers("/products/admin/**").hasRole("ROLE_ADMIN");
-					auth.antMatchers("/categories/admin/**").hasRole("ROLE_ADMIN");
-				})
-				.httpBasic(Customizer.withDefaults())
-				.build();
+	@Bean
+	JwtTokenStore tokenStore() {
+		return new JwtTokenStore(accessTokenConverter());
+	}
+
+	@Bean
+	AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+		return authenticationConfiguration.getAuthenticationManager();
 	}
 	
 }
