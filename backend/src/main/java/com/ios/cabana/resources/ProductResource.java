@@ -40,7 +40,7 @@ public class ProductResource {
 		return ResponseEntity.ok().body(dto);
 	}
 	
-	@PostMapping(value = "/admin/insert")
+	@PostMapping(value = "/admin")
 	public ResponseEntity<ProductDTO> insert(@Valid @RequestBody ProductDTO insertDTO) {
 		ProductDTO dto = productService.insert(insertDTO);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
@@ -48,13 +48,13 @@ public class ProductResource {
 		return ResponseEntity.created(uri).body(dto);
 	}
 	
-	@PutMapping(value = "/admin/update/{id}")
+	@PutMapping(value = "/admin/{id}")
 	public ResponseEntity<ProductDTO> update(@PathVariable Long id, @Valid @RequestBody ProductDTO dto) {
 		dto = productService.update(id, dto);
 		return ResponseEntity.ok().body(dto);
 	}
 	
-	@DeleteMapping(value = "/admin/delete/{id}")
+	@DeleteMapping(value = "/admin/{id}")
 	public ResponseEntity<Void> delete(@PathVariable Long id) {
 		productService.delete(id);
 		return ResponseEntity.noContent().build();

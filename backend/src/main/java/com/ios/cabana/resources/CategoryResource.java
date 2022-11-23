@@ -39,7 +39,7 @@ public class CategoryResource {
 		return ResponseEntity.ok().body(dto);
 	}
 	
-	@PostMapping(value = "/admin/insert")
+	@PostMapping(value = "/admin")
 	public ResponseEntity<CategoryDTO> insert(@RequestBody CategoryDTO dto) {
 		 dto = categoryService.insert(dto);
 		 URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
@@ -47,13 +47,13 @@ public class CategoryResource {
 		return ResponseEntity.created(uri).body(dto);
 	}
 	
-	@PutMapping(value = "/admin/update/{id}")
+	@PutMapping(value = "/admin/{id}")
 	public ResponseEntity<CategoryDTO> update(@PathVariable Long id, @RequestBody CategoryDTO dto) {
 		dto = categoryService.update(id, dto);
 		return ResponseEntity.ok().body(dto);
 	}
 	
-	@DeleteMapping(value = "/admin/delete/{id}")
+	@DeleteMapping(value = "/admin/{id}")
 	public ResponseEntity<Void> delete(@PathVariable Long id) {
 		categoryService.delete(id);
 		return ResponseEntity.noContent().build();

@@ -36,11 +36,10 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	// endpoints (rotas) publicas
 	private static final String[] PUBLIC = { "/oauth/token/**", "/h2-console/**" };
 	
-	// endpoints (rotas) para funcionarioss
-	private static final String[] STAFF = { "/categories/**", "/products/**",  "/orders/**" };
+	private static final String[] RESTRICT = { "/products/**", "/categories/**", "/orders/**", };
 	
-	// endpoints (rotas) para admin
-	private static final String[] ADMIN = { "/**" };
+	private static final String[] ROOT = { "/products/admin/**", "/categories/admin/**", 
+			"/orders/admin/**", "/users/admmin/**", "/roles/admin/**" };
 	
 	//Verificar Token valido para o recurso
 	@Override
@@ -54,13 +53,15 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 		if (Arrays.asList(env.getActiveProfiles()).contains("test")) {
 			http.headers().frameOptions().disable();
 		}
-		http.authorizeRequests()
-			.antMatchers(PUBLIC).permitAll()
-			.antMatchers(ADMIN).permitAll()
-			.antMatchers(HttpMethod.GET, STAFF).permitAll()
-			.antMatchers(STAFF).hasAnyRole("OPERATOR", "SELLER", "STAFF")
-			.anyRequest().authenticated();
 		http.cors().configurationSource(corsConfigurationSource());
+
+		http.csrf().disable()
+			.authorizeRequests()
+			.antMatchers(ROOT).hasRole("ADMIN")
+			.antMatchers(HttpMethod.GET, RESTRICT).permitAll()
+			.antMatchers(RESTRICT).hasAnyRole("ADMIN", "OPERATOR", "STAFF", "SELLER")
+			.antMatchers(PUBLIC).permitAll()
+			.anyRequest().authenticated();		
 	}
 	
 	@Bean
