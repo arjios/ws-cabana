@@ -1,13 +1,16 @@
-import './styles.css';
 
-const ButtonIcon = () => {
+import "./styles.css";
 
-    return (
-        <button className="btn btn-primary btn-icon">
-            <p>LOGIN</p>
-        </button>
-    );
+type Props = {
+  text: string;
+};
 
-}
+const ButtonIcon = ({ text }: Props) => {
+  return (
+    <button className="btn btn-primary btn-icon">
+      <p>{text}</p>
+    </button>
+  );
+};
 
 export default ButtonIcon;
