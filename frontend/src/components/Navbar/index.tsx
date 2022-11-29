@@ -1,14 +1,20 @@
 import "./styles.css";
 import "bootstrap/js/src/collapse.js";
+import { Link } from "react-router-dom";
+import ButtonIcon from "components/ButtonIcon";
 
-const Navbar = () => {
+type Props = {
+  text: string;
+};
+
+const Navbar = ({text}: Props) => {
   return (
     <>
       <nav className="navbar navbar-expand-md navbar-dark bg-primary">
         <div className="navbar_container container-fluid">
-          <a href="link" className="navbar_logo">
+          <Link to="/" className="navbar_logo">
             <h4>Beach Hut</h4>
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -23,12 +29,15 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbar-hamburger">
             <ul className="navbar-nav offset-md-11 main-menu">
               <li className="navbar_item">
-                <a href="link" className="navbar_link">
-                  Login
-                </a>
+                <Link to="/">
+                  <ButtonIcon text={text} />
+                </Link>
               </li>
             </ul>
           </div>
+          <Link to="/">
+                  <ButtonIcon text={text} />
+                </Link>
         </div>
       </nav>
     </>

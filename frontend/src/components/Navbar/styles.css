@@ -8,6 +8,7 @@
 
 .navbar_container {
     display: flex;
+    align-items: center;
     justify-content: space-between;
 }
 
@@ -24,7 +25,6 @@
 
 .navbar_link {
     margin-right: 20px;
-
     color: #AAA;
 }
 

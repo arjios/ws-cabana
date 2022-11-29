@@ -1,20 +1,22 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "components/Navbar";
 import Home from "pages/Home";
-import Login from "pages/Login";
 import Formlogin from "pages/Login/Auth/Formlogin";
-
+import Formrecover from "pages/Login/Auth/Formrecover";
+import Formregister from "pages/Login/Auth/Formregister/indeex";
+import Auth from "pages/Login/Auth";
 
 const Router = () => {
   return (
     <BrowserRouter>
-      <Navbar />
+      <Navbar text="LOGIN" />
       <Routes>
-        <Route path="/" element={<Home />} />
         <Route index element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/login/auth" element={<Navigate to="/login/auth/formlogin" />} />
-        <Route path="/login/auth/login" element={<Formlogin />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/login/auth/*" element={<Auth />} />
+        <Route path="/login/auth/formlogin" element={<Formlogin />} />
+        <Route path="/login/auth/formrecover" element={<Formrecover />} />
+        <Route path="/login/auth/formregister" element={<Formregister />} />
       </Routes>
     </BrowserRouter>
   );
