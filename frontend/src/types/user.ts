@@ -4,7 +4,7 @@ export type User = {
     lastName: string;
     email: string;
     password: string;
-    roles: string[];
+    roles: Role;
   };
 
   export type Role= {

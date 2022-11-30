@@ -7,7 +7,7 @@ type Props = {
   text: string;
 };
 
-const Navbar = ({text}: Props) => {
+const Navbar = ({ text }: Props) => {
   return (
     <>
       <nav className="navbar navbar-expand-md navbar-dark bg-primary">
@@ -35,9 +35,6 @@ const Navbar = ({text}: Props) => {
               </li>
             </ul>
           </div>
-          <Link to="/">
-                  <ButtonIcon text={text} />
-                </Link>
         </div>
       </nav>
     </>

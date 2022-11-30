@@ -1,6 +1,6 @@
 .home_container {
     padding: 5px;
-    font-size: 26px;
+    font-size: 24px;
     text-align: center;
 }
 
@@ -43,6 +43,10 @@
         padding: 25px 15px;
     }
 
+    .home_button  {
+        display: none;
+    }
+
 }
 
 @media only screen and (min-width: 576px) {
@@ -50,6 +54,10 @@
     .home_container {
         padding: 10px;
         font-size: 32px;
+    }
+
+    .home_button  {
+        display: none;
     }
 }
 
@@ -59,12 +67,20 @@
         height: 400px;
     }
 
+    .home_button  {
+        display: none;
+    }
+
 }
 
 @media only screen and (min-width: 992px) {
     
     .home_image svg {
         height: 400px;
+    }
+
+    .home_button  {
+        display: none;
     }
 
 }

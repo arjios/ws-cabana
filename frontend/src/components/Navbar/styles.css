@@ -19,6 +19,7 @@
 }
 
 .navbar_item {
+    display: none;
     margin-top: 8px;
     list-style: none;
 }
@@ -30,4 +31,29 @@
 
 .navbar_link:hover {
     color: #FFF;
+}
+
+
+@media only screen and (min-width: 576px) {
+    
+    .navbar_item {
+        display: flex;
+    }
+
+}
+
+@media only screen and (min-width: 768px) {
+    
+    .navbar_item {
+        display: flex;
+    }
+
+}
+
+@media only screen and (min-width: 992px) {
+    
+    .navbar_item {
+        display: flex;
+    }
+
 }

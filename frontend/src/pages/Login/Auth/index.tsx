@@ -4,25 +4,32 @@ import Formlogin from "./Formlogin";
 import Formrecover from "./Formrecover";
 import Formregister from "./Formregister/indeex";
 import { useForm } from "react-hook-form";
+import { requestBackendLogin } from "util/requests";
 
 import "./styles.css";
 
+
 type FormData = {
-  email: string;
-  senha: string;
+  username: string;
+  password: string;
 };
 
 const Auth = () => {
   const { register, handleSubmit } = useForm<FormData>();
 
-  const onSubmit = (formData: FormData) => {
-    console.log(formData);
+  const onSubmit = (formData:FormData) => {
+    requestBackendLogin(formData)
+      .then(response => {
+        console.log('Sucesso! ', response);
+      })
+      .catch(error => {
+        console.log('Error ', error);
+      })
   };
 
   return (
     <div className="auth_container">
       <div className="auth_content base_card">
-        <div className="auth_card">
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="auth_form base_card"
@@ -31,17 +38,17 @@ const Auth = () => {
               <p>LOGIN</p>
             </div>
             <input
-              {...register("email")}
-              className="auth_input"
+              {...register("username")}
+              className="form-control base_input auth_input"
               type="text"
-              name="email"
+              name="username"
               placeholder="Email"
             />
             <input
-              {...register("senha")}
-              className="auth_input"
+              {...register("password")}
+              className="form-control base_input auth_input"
               type="password"
-              name="senha"
+              name="password"
               placeholder="Senha"
             />
             <div className="auth_submit">
@@ -62,7 +69,7 @@ const Auth = () => {
           </Routes>
         </div>
       </div>
-    </div>
+
   );
 };
 
