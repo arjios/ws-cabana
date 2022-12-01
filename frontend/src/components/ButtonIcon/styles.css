@@ -8,6 +8,8 @@
 }
 
 .btn-text {
+    margin: 0px;
+    text-align: center;
     font-size: 16px;
     text-align: center;
 }

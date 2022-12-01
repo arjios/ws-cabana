@@ -1,6 +1,6 @@
 .navbar_principal {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     background-color: navy;
     min-height: 70px;
@@ -8,24 +8,22 @@
 
 .navbar_container {
     display: flex;
+    justify-content: space-around;
     align-items: center;
     justify-content: space-between;
 }
 
 .navbar_logo, .navbar_logo:hover {
     margin-left: 20px;
-    margin-top: 8px;
     color: #FFF;
 }
 
 .navbar_item {
     display: none;
-    margin-top: 8px;
     list-style: none;
 }
 
 .navbar_link {
-    margin-right: 20px;
     color: #AAA;
 }
 
@@ -53,6 +51,15 @@
 @media only screen and (min-width: 992px) {
     
     .navbar_item {
+        display: flex;
+    }
+
+}
+
+@media only screen and (min-width: 1200px) {
+    
+    .navbar_item {
+        margin-right: auto;
         display: flex;
     }
 

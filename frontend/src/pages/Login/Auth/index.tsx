@@ -3,11 +3,11 @@ import ButtonIcon from "components/ButtonIcon";
 import Formlogin from "./Formlogin";
 import Formrecover from "./Formrecover";
 import Formregister from "./Formregister/indeex";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { requestBackendLogin } from "util/requests";
 
 import "./styles.css";
-
 
 type FormData = {
   username: string;
@@ -15,61 +15,64 @@ type FormData = {
 };
 
 const Auth = () => {
+  const [hasError, setHasError] = useState(false);
+
   const { register, handleSubmit } = useForm<FormData>();
 
-  const onSubmit = (formData:FormData) => {
+  const onSubmit = (formData: FormData) => {
     requestBackendLogin(formData)
-      .then(response => {
-        console.log('Sucesso! ', response);
+      .then((response) => {
+        setHasError(false);
+        console.log("Sucesso! ", response);
       })
-      .catch(error => {
-        console.log('Error ', error);
-      })
+      .catch((error) => {
+        setHasError(true);
+        console.log("Error ", error);
+      });
   };
 
   return (
     <div className="auth_container">
       <div className="auth_content base_card">
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="auth_form base_card"
-          >
-            <div className="auth_title">
-              <p>LOGIN</p>
-            </div>
-            <input
-              {...register("username")}
-              className="form-control base_input auth_input"
-              type="text"
-              name="username"
-              placeholder="Email"
-            />
-            <input
-              {...register("password")}
-              className="form-control base_input auth_input"
-              type="password"
-              name="password"
-              placeholder="Senha"
-            />
-            <div className="auth_submit">
-              <p>Esqueceu sua senha? Recuperar.</p>
-              <p>Ainda não tem conta? Registrar.</p>
-              <ButtonIcon text="FAZER LOGIN" />
-            </div>
-          </form>
+        <form onSubmit={handleSubmit(onSubmit)} className="auth_form base_card">
+          <div className="auth_title">
+            <p>LOGIN</p>
+          </div>
+          {hasError && (
+            <div className="alert alert-danger auth_input">Email ou senha invalida!</div>
+          )}
+          <input
+            {...register("username")}
+            className="form-control base_input auth_input"
+            type="text"
+            name="username"
+            placeholder="Email"
+          />
+          <input
+            {...register("password")}
+            className="form-control base_input auth_input"
+            type="password"
+            name="password"
+            placeholder="Senha"
+          />
+          <div className="auth_submit">
+            <p>Esqueceu sua senha? Recuperar.</p>
+            <p>Ainda não tem conta? Registrar.</p>
+            <ButtonIcon  text="FAZER LOGIN" />
+          </div>
+        </form>
 
-          <Routes>
-            <Route path="/login/auth/formlogin" element={<Formlogin />} />
-          </Routes>
-          <Routes>
-            <Route path="/login/auth/formregister" element={<Formregister />} />
-          </Routes>
-          <Routes>
-            <Route path="/login/auth/formrecover" element={<Formrecover />} />
-          </Routes>
-        </div>
+        <Routes>
+          <Route path="/login/auth/formlogin" element={<Formlogin />} />
+        </Routes>
+        <Routes>
+          <Route path="/login/auth/formregister" element={<Formregister />} />
+        </Routes>
+        <Routes>
+          <Route path="/login/auth/formrecover" element={<Formrecover />} />
+        </Routes>
       </div>
-
+    </div>
   );
 };
 
