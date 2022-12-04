@@ -8,6 +8,7 @@ import java.util.List;
 import com.ios.cabana.entities.Order;
 import com.ios.cabana.entities.Product;
 import com.ios.cabana.entities.Role;
+import com.ios.cabana.entities.User;
 import com.ios.cabana.entities.enuns.OrderStatus;
 
 public class OrderDTO implements Serializable {
@@ -19,20 +20,19 @@ public class OrderDTO implements Serializable {
 	private Instant moment;
 	private OrderStatus status;
 
-	private Role role;
+	private List<User> users = new ArrayList<>();
 
 	private List<Product> products = new ArrayList<>();
 
 	public OrderDTO() {
 	}
 
-	public OrderDTO(Long id, Integer account, Long codeSeller, Instant moment, OrderStatus status, Role role) {
+	public OrderDTO(Long id, Integer account, Long codeSeller, Instant moment, OrderStatus status) {
 		this.id = id;
 		this.account = account;
 		this.codeSeller = codeSeller;
 		this.moment = moment;
 		this.status = status;
-		this.role = role;
 	}
 
 	public OrderDTO(Order entity) {
@@ -40,7 +40,6 @@ public class OrderDTO implements Serializable {
 		account = entity.getAccount();
 		moment = entity.getMoment();
 		status = entity.getStatus();
-		role = entity.getRole();
 	}
 	
 	public Long getId() {
@@ -83,12 +82,8 @@ public class OrderDTO implements Serializable {
 		this.status = status;
 	}
 
-	public Role getRole() {
-		return role;
-	}
-
-	public void setRole(Role role) {
-		this.role = role;
+	public List<User> getUsers() {
+		return users;
 	}
 
 	public List<Product> getProducts() {

@@ -7,14 +7,12 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.ios.cabana.entities.enuns.OrderStatus;
@@ -32,10 +30,6 @@ public class Order implements Serializable {
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant moment;
 	private OrderStatus status;
-	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "role_id")
-	private Role role;
 	
 	@ManyToMany
 	@JoinTable( name = "tb_order_product", 
@@ -86,14 +80,6 @@ public class Order implements Serializable {
 		this.status = status;
 	}
 
-	public Role getRole() {
-		return role;
-	}
-	
-	public void setRole(Role role) {
-		this.role = role;
-	}
-	
 	public List<Product> getProducts() {
 		return products;
 	}
