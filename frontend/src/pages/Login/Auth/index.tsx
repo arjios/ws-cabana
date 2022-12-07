@@ -17,7 +17,7 @@ type FormData = {
 const Auth = () => {
   const [hasError, setHasError] = useState(false);
 
-  const { register, handleSubmit } = useForm<FormData>();
+  const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
 
   const onSubmit = (formData: FormData) => {
     requestBackendLogin(formData)
@@ -39,26 +39,46 @@ const Auth = () => {
             <p>LOGIN</p>
           </div>
           {hasError && (
-            <div className="alert alert-danger auth_input">Email ou senha invalida!</div>
+            <div className="alert alert-danger auth_input">
+              Email ou senha invalida!
+            </div>
           )}
-          <input
-            {...register("username")}
-            className="form-control base_input auth_input"
-            type="text"
-            name="username"
-            placeholder="Email"
-          />
-          <input
-            {...register("password")}
-            className="form-control base_input auth_input"
-            type="password"
-            name="password"
-            placeholder="Senha"
-          />
+          <div className="mb-4">
+            <input
+              {...register("username", {
+                required: "Campo não deve estar em branco",
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: "Email invalido!"
+                } 
+              })}
+              className="form-control base_input auth_input"
+              type="text"
+              name="username"
+              placeholder="Email"
+            />
+            <div className="d-block invalid-feedback">{errors.username?.message}</div>
+          </div>
+          <div className="mb-2">
+            <input
+              {...register("password", {
+                required: "Senha não pode estar em branco",
+                minLength: {
+                  value: 6,
+                  message: "O campo deve conter 6 digitos no minimo!"
+                }
+              })}
+              className="form-control base_input auth_input"
+              type="password"
+              name="password"
+              placeholder="Senha"
+            />
+            <div className="d-block invalid-feedback">{errors.password?.message}</div>
+          </div>
           <div className="auth_submit">
             <p>Esqueceu sua senha? Recuperar.</p>
             <p>Ainda não tem conta? Registrar.</p>
-            <ButtonIcon  text="FAZER LOGIN" />
+            <ButtonIcon text="FAZER LOGIN" />
           </div>
         </form>
 
