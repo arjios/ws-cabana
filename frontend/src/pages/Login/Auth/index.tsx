@@ -5,7 +5,7 @@ import Formrecover from "./Formrecover";
 import Formregister from "./Formregister/indeex";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { requestBackendLogin } from "util/requests";
+import { requestBackendLogin, storeAuthData } from "util/requests";
 
 import "./styles.css";
 
@@ -22,6 +22,7 @@ const Auth = () => {
   const onSubmit = (formData: FormData) => {
     requestBackendLogin(formData)
       .then((response) => {
+        storeAuthData(response.data);
         setHasError(false);
         console.log("Sucesso! ", response);
       })
@@ -52,7 +53,7 @@ const Auth = () => {
                   message: "Email invalido!"
                 } 
               })}
-              className="form-control base_input auth_input"
+              className={`form-control base_input auth_input ${errors.username?'is-invalid':''}`}
               type="text"
               name="username"
               placeholder="Email"
@@ -68,7 +69,7 @@ const Auth = () => {
                   message: "O campo deve conter 6 digitos no minimo!"
                 }
               })}
-              className="form-control base_input auth_input"
+              className={`form-control base_input auth_input ${errors.password?'is-invalid':''}`}
               type="password"
               name="password"
               placeholder="Senha"
@@ -77,8 +78,8 @@ const Auth = () => {
           </div>
           <div className="auth_submit">
             <p>Esqueceu sua senha? Recuperar.</p>
-            <p>Ainda não tem conta? Registrar.</p>
             <ButtonIcon text="FAZER LOGIN" />
+            <p>Ainda não tem conta? Registrar.</p>
           </div>
         </form>
 

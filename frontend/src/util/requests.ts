@@ -7,6 +7,18 @@ const CLIENT_ID = process.env.REACT_APP_CLIENT_ID ?? 'cabanas';
 
 const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET ?? 'cabanas@123';
 
+const tokenKey = 'authData';
+
+type LoginResponse = {
+        access_token: string;
+        token_type: string;
+        expires_in: number;
+        scope: string;
+        userName: string;
+        userRole: string;
+        userId: number;
+}
+
 type LoginData = {
     username: string;
     password: string;
@@ -25,4 +37,13 @@ export const requestBackendLogin = (loginData:LoginData) => {
     });
 
     return axios({method: 'POST', baseURL:BASE_URL, url:'oauth/token', data, headers});
+}
+
+export const storeAuthData = (obj: LoginResponse) => {
+    localStorage.setItem(tokenKey, JSON.stringify(obj));
+}
+
+export const getAuthData = () => {
+    const str = localStorage.getItem(tokenKey)  ?? '{}';
+    return JSON.parse(str) as LoginResponse;
 }
