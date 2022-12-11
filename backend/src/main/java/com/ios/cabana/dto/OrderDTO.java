@@ -2,12 +2,9 @@ package com.ios.cabana.dto;
 
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.ios.cabana.entities.Order;
 import com.ios.cabana.entities.Product;
-import com.ios.cabana.entities.Role;
 import com.ios.cabana.entities.User;
 import com.ios.cabana.entities.enuns.OrderStatus;
 
@@ -16,21 +13,18 @@ public class OrderDTO implements Serializable {
 	
 	private Long id;
 	private Integer account;
-	private Long codeSeller;
 	private Instant moment;
 	private OrderStatus status;
 
-	private List<User> users = new ArrayList<>();
-
-	private List<Product> products = new ArrayList<>();
+	private User user;
+	private Product product;
 
 	public OrderDTO() {
 	}
 
-	public OrderDTO(Long id, Integer account, Long codeSeller, Instant moment, OrderStatus status) {
+	public OrderDTO(Long id, Integer account, Instant moment, OrderStatus status) {
 		this.id = id;
 		this.account = account;
-		this.codeSeller = codeSeller;
 		this.moment = moment;
 		this.status = status;
 	}
@@ -58,14 +52,6 @@ public class OrderDTO implements Serializable {
 		this.account = account;
 	}
 
-	public Long getCodeSeller() {
-		return codeSeller;
-	}
-
-	public void setCodeSeller(Long codeSeller) {
-		this.codeSeller = codeSeller;
-	}
-
 	public Instant getMoment() {
 		return moment;
 	}
@@ -82,12 +68,12 @@ public class OrderDTO implements Serializable {
 		this.status = status;
 	}
 
-	public List<User> getUsers() {
-		return users;
+	public User getUsers() {
+		return user;
 	}
 
-	public List<Product> getProducts() {
-		return products;
+	public Product getProducts() {
+		return product;
 	}
 
 }

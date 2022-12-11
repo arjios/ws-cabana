@@ -34,3 +34,17 @@ INSERT INTO tb_product (number, name, description, url_image, date, price, categ
 INSERT INTO tb_product (number, name, description, url_image, date, price, category_id) VALUES (101, 'CASQUINHA DE SIRI 200G', 'Casquinha de siri 200g 1 unidade. Acompanha Farofa e Vinagrete', '../../assets/images/jpg/products/torresmo.jpg', NOW(), 34.90, 1);
 INSERT INTO tb_product (number, name, description, url_image, date, price, category_id) VALUES (114, 'CASCATA DE CAMARÃO MÉDIO', 'Cascata de Camarão 6 unidades com molho tártaro', '../../assets/images/jpg/products/torresmo.jpg', NOW(), 49.90, 1);
 INSERT INTO tb_product (number, name, description, url_image, date, price, category_id) VALUES (107, 'LINGUIÇA DE ROÇA (GROSSA) 250G', 'Linguiça da roça 250g com Queijo Coalho 100g', '../../assets/images/jpg/products/torresmo.jpg', NOW(), 44.90, 1);
+
+INSERT INTO tb_order (account, moment, status, product_id, user_id) VALUES (101, '2022-12-11', 0, 1, 1);
+INSERT INTO tb_order (account, moment, status, product_id, user_id) VALUES (101, '2022-12-11', 0, 2, 1);
+INSERT INTO tb_order (account, moment, status, product_id, user_id) VALUES (201, '2022-12-11', 0, 1, 2);
+INSERT INTO tb_order (account, moment, status, product_id, user_id) VALUES (204, '2022-12-11', 0, 5, 2);
+INSERT INTO tb_order (account, moment, status, product_id, user_id) VALUES (111, '2022-12-11', 0, 7, 1);
+INSERT INTO tb_order (account, moment, status, product_id, user_id) VALUES (112, '2022-12-11', 0, 10, 1);
+INSERT INTO tb_order (account, moment, status, product_id, user_id) VALUES (241, '2022-12-11', 0, 9, 2);
+INSERT INTO tb_order (account, moment, status, product_id, user_id) VALUES (104, '2022-12-11', 0, 3, 1);
+INSERT INTO tb_order (account, moment, status, product_id, user_id) VALUES (102, '2022-12-11', 0, 2, 1);
+INSERT INTO tb_order (account, moment, status, product_id, user_id) VALUES (102, '2022-12-11', 0, 1, 1);
+INSERT INTO tb_order (account, moment, status, product_id, user_id) VALUES (104, '2022-12-11', 0, 4, 1);
+INSERT INTO tb_order (account, moment, status, product_id, user_id) VALUES (104, '2022-12-11', 0, 2, 1);
+

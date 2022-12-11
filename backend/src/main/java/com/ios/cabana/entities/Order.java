@@ -2,17 +2,15 @@ package com.ios.cabana.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.ios.cabana.entities.enuns.OrderStatus;
@@ -31,11 +29,13 @@ public class Order implements Serializable {
 	private Instant moment;
 	private OrderStatus status;
 	
-	@ManyToMany
-	@JoinTable( name = "tb_order_product", 
-				joinColumns = @JoinColumn( name = "order_id"),
-				inverseJoinColumns = @JoinColumn( name = "product_id"))
-	private List<Product> products = new ArrayList<>();
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "user_id")
+	private User user;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "product_id")
+	private Product product;
 
 	public Order() {
 	}
@@ -80,8 +80,12 @@ public class Order implements Serializable {
 		this.status = status;
 	}
 
-	public List<Product> getProducts() {
-		return products;
+	public User getUser() {
+		return user;
+	}
+
+	public Product getProducts() {
+		return product;
 	}
 
 	@Override
