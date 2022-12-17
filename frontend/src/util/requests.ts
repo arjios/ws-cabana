@@ -1,4 +1,3 @@
-import { BASE_URL } from './requests';
 
 import axios, { AxiosRequestConfig } from "axios";
 import qs from "qs";
@@ -53,3 +52,20 @@ export const getAuthData = () => {
     const str = localStorage.getItem(tokenKey)  ?? '{}';
     return JSON.parse(str) as LoginResponse;
 }
+
+axios.interceptors.request.use(function (config) {
+
+    return config;
+  }, function (error) {
+
+    return Promise.reject(error);
+  });
+
+
+axios.interceptors.response.use(function (response) {
+
+    return response;
+  }, function (error) {
+
+    return Promise.reject(error);
+  });

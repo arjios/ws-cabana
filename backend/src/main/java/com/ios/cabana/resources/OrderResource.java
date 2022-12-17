@@ -26,6 +26,12 @@ public class OrderResource {
 	public ResponseEntity<Page<OrderDTO>> findAll(Pageable pageable) {
 		Page<OrderDTO> list = orderService.findAllPaged(pageable);
 		return ResponseEntity.ok().body(list);
+	}	
+	
+	@GetMapping(value = "/{account}")
+	public ResponseEntity<List<OrderDTO>> findAllByAccount(Integer account) {
+		List<OrderDTO> list = orderService.findAllPagedByAccount(account);
+		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping(value = "/{status}")

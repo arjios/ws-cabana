@@ -83,9 +83,17 @@ public class Order implements Serializable {
 	public User getUser() {
 		return user;
 	}
+	
+	public Long setUserId(Long user_Id) {
+		return user_Id;
+	}
 
 	public Product getProducts() {
 		return product;
+	}
+	
+	public Long setProductId(Long product_Id) {
+		return product_Id;
 	}
 
 	@Override

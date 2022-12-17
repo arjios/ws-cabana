@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import ButtonIcon from "components/ButtonIcon";
 import Formlogin from "./Formlogin";
 import Formrecover from "./Formrecover";
@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { requestBackendLogin, storeAuthData } from "util/requests";
 
 import "./styles.css";
+
 
 type FormData = {
   username: string;
@@ -19,12 +20,15 @@ const Auth = () => {
 
   const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
 
+  const history = useNavigate();
+
   const onSubmit = (formData: FormData) => {
     requestBackendLogin(formData)
       .then((response) => {
         storeAuthData(response.data);
         setHasError(false);
         console.log("Sucesso! ", response);
+        history('/sales');
       })
       .catch((error) => {
         setHasError(true);
