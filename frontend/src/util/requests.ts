@@ -1,5 +1,6 @@
 
 import axios, { AxiosRequestConfig } from "axios";
+import jwtDecode from "jwt-decode";
 import qs from "qs";
 
 export const BASE_URL = process.env.REACT_APP_BACKEND_URL ?? 'http://localhost:8080';
@@ -9,6 +10,14 @@ const CLIENT_ID = process.env.REACT_APP_CLIENT_ID ?? 'cabanas';
 const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET ?? 'cabanas@123';
 
 const tokenKey = 'authData';
+
+type Role = 'ROLE_ADMIN' | 'ROLE_OPERATOR' | 'ROLE_STAFF' | 'ROLE_SELLER';
+
+type TokenData = {
+    exp: number,
+    user_name: string,
+    authority: Role[]
+}
 
 type LoginResponse = {
         access_token: string;
@@ -54,18 +63,26 @@ export const getAuthData = () => {
 }
 
 axios.interceptors.request.use(function (config) {
-
+    console.log("REQUISIÇÃO COM SUCESSO");
     return config;
   }, function (error) {
-
+    console.log("ERRO NA REQUISIÇÃO");
     return Promise.reject(error);
   });
-
 
 axios.interceptors.response.use(function (response) {
-
+    console.log("RESPOSTA COM SUCESSO");
     return response;
   }, function (error) {
-
+    console.log("eERRO NA RESPOSTA");
     return Promise.reject(error);
   });
+
+  export const getTokenData = ():TokenData | undefined => {
+    try {
+        return jwtDecode(getAuthData().access_token) as TokenData;
+    }
+    catch(error) {
+        return undefined;
+    }
+  }

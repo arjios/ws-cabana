@@ -2,7 +2,7 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import ButtonIcon from "components/ButtonIcon";
 import Formlogin from "./Formlogin";
 import Formrecover from "./Formrecover";
-import Formregister from "./Formregister/indeex";
+import Formregister from "./Formregister/index";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { requestBackendLogin, storeAuthData } from "util/requests";

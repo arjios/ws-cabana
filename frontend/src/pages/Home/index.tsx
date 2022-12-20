@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 
 import "./styles.css";
 import ButtonIcon from "components/ButtonIcon";
+import { getTokenData } from "util/requests";
 
 const Home = () => {
   return (
     <div className="home_container">
+      <h1>{getTokenData()?.user_name}</h1>
       <div className="base_card home_card">
         <div className="home_image">
           <HomeImage />
