@@ -1,13 +1,16 @@
-import { Route, Routes, useNavigate } from "react-router-dom";
-import ButtonIcon from "components/ButtonIcon";
-import Formlogin from "./Formlogin";
-import Formrecover from "./Formrecover";
-import Formregister from "./Formregister/index";
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { requestBackendLogin, storeAuthData } from "util/requests";
 
+import ButtonIcon from "components/ButtonIcon";
+
+import Recover from "./Recover";
+import Signup from "./Signup";
+
 import "./styles.css";
+
 
 
 type FormData = {
@@ -16,9 +19,20 @@ type FormData = {
 };
 
 const Auth = () => {
+  <BrowserRouter>
+    <Routes>
+      <Route path="/auth/signup" element={<Signup />} />
+      <Route path="/auth/recover" element={<Recover />} />
+    </Routes>
+  </BrowserRouter>;
+
   const [hasError, setHasError] = useState(false);
 
-  const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>();
 
   const history = useNavigate();
 
@@ -28,7 +42,7 @@ const Auth = () => {
         storeAuthData(response.data);
         setHasError(false);
         console.log("Sucesso! ", response);
-        history('/sales');
+        history("/sales");
       })
       .catch((error) => {
         setHasError(true);
@@ -54,15 +68,19 @@ const Auth = () => {
                 required: "Campo não deve estar em branco",
                 pattern: {
                   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: "Email invalido!"
-                } 
+                  message: "Email invalido!",
+                },
               })}
-              className={`form-control base_input auth_input ${errors.username?'is-invalid':''}`}
+              className={`form-control base_input auth_input ${
+                errors.username ? "is-invalid" : ""
+              }`}
               type="text"
               name="username"
               placeholder="Email"
             />
-            <div className="d-block invalid-feedback">{errors.username?.message}</div>
+            <div className="d-block invalid-feedback">
+              {errors.username?.message}
+            </div>
           </div>
           <div className="mb-2">
             <input
@@ -70,32 +88,30 @@ const Auth = () => {
                 required: "Senha não pode estar em branco",
                 minLength: {
                   value: 6,
-                  message: "O campo deve conter 6 digitos no minimo!"
-                }
+                  message: "O campo deve conter 6 digitos no minimo!",
+                },
               })}
-              className={`form-control base_input auth_input ${errors.password?'is-invalid':''}`}
+              className={`form-control base_input auth_input ${
+                errors.password ? "is-invalid" : ""
+              }`}
               type="password"
               name="password"
               placeholder="Senha"
             />
-            <div className="d-block invalid-feedback">{errors.password?.message}</div>
+            <div className="d-block invalid-feedback">
+              {errors.password?.message}
+            </div>
           </div>
           <div className="auth_submit">
-            <p>Esqueceu sua senha? Recuperar.</p>
+            <p>
+              Esqueceu sua senha? <Link to="/auth/recover" className="link_content"> Recuperar.</Link>
+            </p>
             <ButtonIcon text="FAZER LOGIN" />
-            <p>Ainda não tem conta? Registrar.</p>
+            <p >
+              Ainda não tem conta? <Link to="/auth/signup" className="link_content"> Signup.</Link>
+            </p>
           </div>
         </form>
-
-        <Routes>
-          <Route path="/login/auth/formlogin" element={<Formlogin />} />
-        </Routes>
-        <Routes>
-          <Route path="/login/auth/formregister" element={<Formregister />} />
-        </Routes>
-        <Routes>
-          <Route path="/login/auth/formrecover" element={<Formrecover />} />
-        </Routes>
       </div>
     </div>
   );

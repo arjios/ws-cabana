@@ -29,7 +29,7 @@ const Navbar = ({ text }: Props) => {
           <div className="collapse navbar-collapse" id="navbar-hamburger">
             <ul className="navbar-nav offset-md-9 main-menu">
               <li className="navbar_item">
-                <Link to="/login/auth">
+                <Link to="/auth">
                   <ButtonIcon text={text} />
                 </Link>
               </li>

@@ -1,0 +1,14 @@
+.row {
+    display: flex;
+    justify-content: center
+}
+
+.sale-user {
+    margin-top: 10px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    text-align: center;
+    color: #263238;
+    
+}

@@ -60,6 +60,10 @@
   align-items: center;
 }
 
+.link_content {
+  color: blue
+}
+
 @media (min-width: 576px) {
   .auth_container {
     height: 520px;

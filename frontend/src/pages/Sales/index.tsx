@@ -4,9 +4,13 @@ import { Order } from "types/order";
 import { SpringPage } from "types/vendor/spring";
 import { requestBackend } from "util/requests";
 import { getTokenData } from "util/requests";
+import SaleCard from "components/SaleCard";
+
+import "./styles.css";
+import SubBar from "components/SubBar";
 
 const Sales = () => {
-  const [page, setPage] = useState<SpringPage <Order> >();
+  const [page, setPage] = useState<SpringPage<Order>>();
 
   useEffect(() => {
     const params: AxiosRequestConfig = {
@@ -17,20 +21,23 @@ const Sales = () => {
         size: 12,
       },
     };
-
     requestBackend(params).then((response) => {
       setPage(response.data);
     });
   }, []);
-  
-return (
-  <div className="row">
-    <h1>Vendas</h1>
-    <h5>Usuario:{getTokenData()?.user_name}</h5>
-    {page?.content.map((x) => (
-      <p key={x.id}>{x.account} {x.status}</p>
-    ))}
-  </div>
+
+  return (
+    <>
+      <SubBar name={getTokenData()?.user_name} />
+      <div className="row my-4">
+        <SaleCard />
+        {page?.content.map((x) => (
+          <p className="sale-row" key={x.id}>
+            {x.account} {x.status}
+          </p>
+        ))}
+      </div>
+    </>
   );
 };
 
