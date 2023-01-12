@@ -2,12 +2,10 @@ import "./styles.css";
 
 const SaleCard = () => {
   return (
-    <div className="my-4 sale_container">
+    <div className="base_card sale_card">
       <div>
-        <h1 className="sale_content">Mesa 101</h1>
-      </div>
-      <div className="sale_footer">
-        <h6>Nome</h6>
+        <h1>Mesa</h1>
+        <h1>101</h1>
       </div>
     </div>
   );

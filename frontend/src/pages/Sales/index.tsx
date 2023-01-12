@@ -29,13 +29,42 @@ const Sales = () => {
   return (
     <>
       <SubBar name={getTokenData()?.user_name} />
-      <div className="row my-4">
-        <SaleCard />
+      <div className="container my-4">
+        <div className="row">
+          <div className="col-sm-4 col-lg-3">
+            <SaleCard />
+          </div>
+          <div className="col-sm-4 col-lg-3">
+            <SaleCard />
+          </div>
+          <div className="col-sm-4 col-lg-3">
+            <SaleCard />
+          </div>
+          <div className="col-sm-4 col-lg-3">
+            <SaleCard />
+          </div>
+          <div className="col-sm-4 col-lg-3">
+            <SaleCard />
+          </div>
+          <div className="col-sm-4 col-lg-3">
+            <SaleCard />
+          </div>
+          <div className="col-sm-4 col-lg-3">
+            <SaleCard />
+          </div>
+          <div className="col-sm-4 col-lg-3">
+            <SaleCard />
+          </div>
+          <div className="col-sm-4 col-lg-3">
+            <SaleCard />
+          </div>
+
+        </div>
         {page?.content.map((x) => (
-          <p className="sale-row" key={x.id}>
-            {x.account} {x.status}
-          </p>
-        ))}
+              <p className="sale-row" key={x.id}>
+                {x.account} {x.status}
+              </p>
+            ))}
       </div>
     </>
   );
